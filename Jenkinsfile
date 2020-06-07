@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        echo 'building stage'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'building stage'
+          }
+        }
+
+        stage('Build-APK') {
+          steps {
+            echo 'this is .apk build'
+          }
+        }
+
       }
     }
 
